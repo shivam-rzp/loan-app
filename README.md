@@ -2,39 +2,8 @@
 
 ****
 
-### Local setup steps
-
-#### Kafka Setup
-0. install docker desktop and enable kubernetes from settings.
-1. `kubectl create namespace kafka`
-2. `kubectl create -f 'https://strimzi.io/install/latest?namespace=kafka' -n kafka`
-   wait for sometime to get this pod running (verify via running kubectl get pods -n kafka)
-3. create kafka.yaml & kafka-ui.yaml as above
-4. `kubectl apply -f kafka.yaml -n kafka`
-5. `kubectl apply -f kafka-ui.yaml -n kafka`
-6. `kubectl wait kafka/my-cluster --for=condition=Ready --timeout=300s -n kafka`
-7. `kubectl get svc -n kafka`
-    1. get port of service my-cluster-kafka-server-bootstrap
-    2. telnet localhost port
-8. use above port in application.properties file. 
-
-#### SQL setup
-
-0. Install mysql
-1. Create database loan_app 
-2. Update application.properties 
-
-#### Run appliction locally
-
-1. Either use any IDE and directly run MainApplication.java as  java application.
-2. Using maven command \
-   2.1 Open a terminal/command prompt. \
-   2.2 Navigate to the root directory of your Spring Boot project (where the pom.xml file is located). \
-   2.3 Run the following command:
-
-    `mvn spring-boot:run` \
-This will compile project and start the Spring Boot application.
-
+### High level design -
+<img width="1269" alt="Screenshot 2024-08-12 at 1 09 47 AM" src="https://github.com/user-attachments/assets/52ed069b-fb16-4fe1-9305-026c87b09ceb">
 
 
 ### API documentation -
@@ -155,4 +124,39 @@ Response
 <!--DOCS_END-->
 
 
-![Screenshot 2024-08-12 at 1.07.49 AM.png](..%2F..%2F..%2F..%2F..%2Fvar%2Ffolders%2Ffp%2Fg0hxgmb931s017_62b1csl4c0000gq%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_O1fvVN%2FScreenshot%202024-08-12%20at%201.07.49%E2%80%AFAM.png)
+### Local setup steps
+
+#### Kafka Setup
+0. install docker desktop and enable kubernetes from settings.
+1. `kubectl create namespace kafka`
+2. `kubectl create -f 'https://strimzi.io/install/latest?namespace=kafka' -n kafka`
+   wait for sometime to get this pod running (verify via running kubectl get pods -n kafka)
+3. create kafka.yaml & kafka-ui.yaml as above
+4. `kubectl apply -f kafka.yaml -n kafka`
+5. `kubectl apply -f kafka-ui.yaml -n kafka`
+6. `kubectl wait kafka/my-cluster --for=condition=Ready --timeout=300s -n kafka`
+7. `kubectl get svc -n kafka`
+    1. get port of service my-cluster-kafka-server-bootstrap
+    2. telnet localhost port
+8. use above port in application.properties file. 
+
+#### SQL setup
+
+0. Install mysql
+1. Create database loan_app 
+2. Update application.properties 
+
+#### Run appliction locally
+
+1. Either use any IDE and directly run MainApplication.java as  java application.
+2. Using maven command \
+   2.1 Open a terminal/command prompt. \
+   2.2 Navigate to the root directory of your Spring Boot project (where the pom.xml file is located). \
+   2.3 Run the following command:
+
+    `mvn spring-boot:run` \
+This will compile project and start the Spring Boot application.
+
+
+
+
